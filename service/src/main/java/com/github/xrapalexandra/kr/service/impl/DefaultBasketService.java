@@ -3,7 +3,11 @@ package com.github.xrapalexandra.kr.service.impl;
 import com.github.xrapalexandra.kr.dao.BasketDao;
 import com.github.xrapalexandra.kr.dao.impl.DefaultBasketDao;
 import com.github.xrapalexandra.kr.model.Order;
+import com.github.xrapalexandra.kr.model.OrderDTO;
+import com.github.xrapalexandra.kr.model.Status;
 import com.github.xrapalexandra.kr.service.BasketService;
+
+import java.util.List;
 
 public class DefaultBasketService implements BasketService {
 
@@ -29,5 +33,20 @@ public class DefaultBasketService implements BasketService {
     @Override
     public void addOrder(Order order) {
         basketDao.addOrder(order);
+    }
+
+    @Override
+    public List<OrderDTO> getOrdersByUserId(int user_id) {
+        return basketDao.getUserOrders(user_id);
+    }
+
+    @Override
+    public List<OrderDTO> getAllOrders(int page) {
+        return basketDao.getAllOrders(page);
+    }
+
+    @Override
+    public void changeOrderStatus(int orderId, Status status) {
+        basketDao.changeOrderStatus(orderId, status);
     }
 }

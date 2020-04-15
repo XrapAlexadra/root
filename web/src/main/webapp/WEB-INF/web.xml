@@ -114,6 +114,25 @@
     <url-pattern>/delfrombasket</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>AdminBasketServlet</servlet-name>
+    <servlet-class>com.github.xrapalexandra.kr.web.servlet.AdminBasketServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminBasketServlet</servlet-name>
+    <url-pattern>/adminbasket</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ChangeBasketServlet</servlet-name>
+    <servlet-class>com.github.xrapalexandra.kr.web.servlet.ChangeBasketServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangeBasketServlet</servlet-name>
+    <url-pattern>/changebasket</url-pattern>
+  </servlet-mapping>
+
+
   <filter>
     <filter-name>ProductListFilter</filter-name>
     <filter-class>com.github.xrapalexandra.kr.web.filter.ProductListFilter</filter-class>

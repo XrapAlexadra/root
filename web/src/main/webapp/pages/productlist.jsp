@@ -20,7 +20,7 @@
             <th>Название</th>
             <th>Цена</th>
             <th>Количество</th>
-         </tr>
+        </tr>
         <c:forEach items="${requestScope.productlist}" var="item" varStatus="infdex">
             <tr>
                 <th><label>
@@ -69,10 +69,10 @@
                 <th><c:out value="${item.price}"/></th>
                 <th><c:out value="${item.quantity}"/></th>
                 <th>
-                    <button form="change" type="submit" name="product_id" value="${item.id}">Изменить</button>
+                    <button form="change" type="submit" name="productid" value="${item.id}">Изменить</button>
                 </th>
                 <th>
-                    <button form="del" type="submit" name="product_id" value="${item.id}">Удалить</button>
+                    <button form="del" type="submit" name="productid" value="${item.id}">Удалить</button>
                 </th>
             </tr>
         </c:forEach>
@@ -98,6 +98,10 @@
             <input type="submit" value="Добавить">
             <input type="reset" value="Сбросить">
         </fieldset>
+    </form>
+    <br>
+    <form method="get" action="${pageContext.request.contextPath}/adminbasket">
+        <input type="submit" value="Все заказы">
     </form>
 </c:if>
 </body>

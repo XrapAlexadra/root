@@ -1,5 +1,7 @@
 package com.github.xrapalexandra.kr.web;
 
+import com.github.xrapalexandra.kr.model.Status;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,5 +31,10 @@ public class WebUtils {
                 return true;
         }
         return false;
+    }
+
+    public static Status createStatus(String s){
+        Status[] status = {Status.ORDER, Status.CONFIRMED, Status.PAID};
+        return status[Integer.parseInt(s)-1];
     }
 }

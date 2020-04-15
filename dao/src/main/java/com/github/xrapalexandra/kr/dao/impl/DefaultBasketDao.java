@@ -5,6 +5,7 @@ import com.github.xrapalexandra.kr.dao.DataSource;
 import com.github.xrapalexandra.kr.dao.Utils;
 import com.github.xrapalexandra.kr.model.Order;
 import com.github.xrapalexandra.kr.model.OrderDTO;
+import com.github.xrapalexandra.kr.model.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -102,11 +103,30 @@ public class DefaultBasketDao implements BasketDao {
                 while (rs.next()) {
                     orderDTOList.add(Utils.createOrderDTO(rs));
                 }
-                return orderDTOList;
+                if(orderDTOList.size() == 0)
+                    return null;
+                else
+                    return orderDTOList;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    @Override
+    public void changeOrderStatus(int orderId, Status status) {
+        final String query = "UPDATE basket SET status_id = (SELECT status_id FROM status WHERE status = ?) WHERE id = ?;";
+        try (Connection connection = DataSource.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, status.name());
+            statement.setInt(2, orderId);
+            statement.executeUpdate();
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new RuntimeException( "Order " + orderId + " don't update! ");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
