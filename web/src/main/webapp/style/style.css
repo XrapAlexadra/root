@@ -1,0 +1,27 @@
+table{
+    border-collapse: collapse;
+}
+caption{
+    caption-side: top;
+}
+th, td{
+    border: 1px dotted dimgrey;
+    }
+th:first-child{
+    text-align: left;
+}
+table tr:nth-child(odd){
+    background-color: lightgrey;
+}
+table tr:first-child{
+    background-color: grey;
+    color: white;
+}
+table tr:hover{
+    background-color: rgba(255,171,251,0.57);
+    color: rgba(68,0,115,0.82);
+    cursor: pointer;
+}
+table tr:first-child>th{
+    text-align: center;
+}
