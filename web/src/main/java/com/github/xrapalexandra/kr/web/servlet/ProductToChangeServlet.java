@@ -14,8 +14,8 @@ public class ProductToChangeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        int product_id = Integer.parseInt(req.getParameter("productid"));
+        int product_id = Integer.parseInt(req.getParameter("productId"));
         req.setAttribute("product", productService.getProductById(product_id));
-        WebUtils.forwardJSP("pages/changeproduct", req, resp);
+        WebUtils.forwardJSP("pages/changeProduct", req, resp);
     }
 }

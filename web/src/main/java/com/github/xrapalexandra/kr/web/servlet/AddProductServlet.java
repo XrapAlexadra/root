@@ -22,7 +22,7 @@ public class AddProductServlet extends HttpServlet {
         productService.addProduct(product);
 
         try {
-            resp.sendRedirect("/web/productlist");
+            resp.sendRedirect("/web/productList");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

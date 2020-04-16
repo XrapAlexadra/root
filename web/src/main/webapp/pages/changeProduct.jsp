@@ -9,7 +9,7 @@
 
         ID:
         <label>
-            <select name="product_id">
+            <select name="productId">
                 <option value="${requestScope.product.id}">${requestScope.product.id}</option>
             </select>
         </label>

@@ -19,7 +19,7 @@ public class AddOrderServlet extends HttpServlet {
             bean.addProductId(Integer.parseInt(value));
 
         try {
-            resp.sendRedirect("/web/productlist");
+            resp.sendRedirect("/web/productList");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -28,7 +28,7 @@ public class AddOrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         try {
-            resp.sendRedirect("/web/productlist");
+            resp.sendRedirect("/web/productList");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

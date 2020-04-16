@@ -24,7 +24,7 @@ public class AuthServlet extends HttpServlet {
         String login = req.getParameter("login");
         User user = new User(login, Role.USER, req.getParameter("pass"));
         if (userService.saveUserInDB(user) == null) {
-            req.setAttribute("alreadyexsist", login);
+            req.setAttribute("alreadyExist", login);
             WebUtils.forwardJSP("pages/auth", req, resp);
         } else {
             req.getSession().setAttribute("user", user);

@@ -39,7 +39,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ProductListServlet</servlet-name>
-    <url-pattern>/productlist</url-pattern>
+    <url-pattern>/productList</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -48,7 +48,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AddProductServlet</servlet-name>
-    <url-pattern>/addproduct</url-pattern>
+    <url-pattern>/addProduct</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -57,7 +57,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ProductToChangeServlet</servlet-name>
-    <url-pattern>/tochange</url-pattern>
+    <url-pattern>/toChange</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -93,7 +93,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AddOrderServlet</servlet-name>
-    <url-pattern>/addorder</url-pattern>
+    <url-pattern>/addOrder</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -102,7 +102,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>SettingOrderServlet</servlet-name>
-    <url-pattern>/setorder</url-pattern>
+    <url-pattern>/setOrder</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -111,7 +111,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>DelFromBasketServlet</servlet-name>
-    <url-pattern>/delfrombasket</url-pattern>
+    <url-pattern>/delFromBasket</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -120,7 +120,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminBasketServlet</servlet-name>
-    <url-pattern>/adminbasket</url-pattern>
+    <url-pattern>/adminBasket</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -129,7 +129,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ChangeBasketServlet</servlet-name>
-    <url-pattern>/changebasket</url-pattern>
+    <url-pattern>/changeBasket</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -138,7 +138,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>WriteOfServlet</servlet-name>
-    <url-pattern>/writeoff</url-pattern>
+    <url-pattern>/writeOff</url-pattern>
   </servlet-mapping>
 
 

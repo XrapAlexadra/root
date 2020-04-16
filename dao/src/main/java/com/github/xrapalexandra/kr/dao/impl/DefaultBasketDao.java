@@ -16,6 +16,9 @@ import java.util.List;
 
 public class DefaultBasketDao implements BasketDao {
 
+    private DefaultBasketDao() {
+    }
+
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     private static volatile BasketDao instance;

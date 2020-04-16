@@ -22,6 +22,7 @@ public class SettingOrderServlet extends HttpServlet {
         User user = (User) req.getSession().getAttribute("user");
         int[] quantity = Arrays.stream(req.getParameterValues("quantity"))
                 .mapToInt(Integer::parseInt).toArray();
+
         BasketBean bean = (BasketBean) req.getSession().getAttribute("basket");
         List<Integer> productIdList =bean.getOrders();
         for(int i = 0; i < productIdList.size(); i++){
@@ -32,6 +33,7 @@ public class SettingOrderServlet extends HttpServlet {
             order.setStatus(Status.ORDER);
             basketService.addOrder(order);
         }
+
         req.getSession().removeAttribute("basket");
         try {
             resp.sendRedirect("/web/basket");

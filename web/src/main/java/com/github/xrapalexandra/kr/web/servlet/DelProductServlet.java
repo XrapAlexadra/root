@@ -14,7 +14,7 @@ public class DelProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-       productService.delProduct(Integer.parseInt(req.getParameter("productid")));
-        WebUtils.forward("productlist", req, resp);
+       productService.delProduct(Integer.parseInt(req.getParameter("productId")));
+       WebUtils.forward("productList", req, resp);
     }
 }

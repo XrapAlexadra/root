@@ -20,9 +20,9 @@ public class ChangeProductServlet extends HttpServlet {
         product.setName(req.getParameter("name"));
         product.setPrice(Integer.parseInt(req.getParameter("price")));
         product.setQuantity(Integer.parseInt(req.getParameter("quantity")));
-        product.setId(Integer.parseInt(req.getParameter("productid")));
+        product.setId(Integer.parseInt(req.getParameter("productId")));
         if (!productService.updateProduct(product))
             req.setAttribute("error", "Невозможно изменить товар! Такой уже существует!");
-        WebUtils.forward("productlist", req, resp);
+        WebUtils.forward("productList", req, resp);
     }
 }

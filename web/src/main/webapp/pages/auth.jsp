@@ -6,8 +6,8 @@
     <title>Регистрация</title>
 </head>
 <body>
-<c:if test="${requestScope.alreadyexsist != null}">
-    <h5 style="color: blue">Пользователь с логином "${requestScope.alreadyexsist}" уже существует. Используйте другой.</h5>
+<c:if test="${requestScope.alreadyExist != null}">
+    <h5 style="color: blue">Пользователь с логином "${requestScope.alreadyExist}" уже существует. Используйте другой.</h5>
 </c:if>
 <form  method="post" action="${pageContext.request.contextPath}/auth">
 <fieldset style="width: 45px">

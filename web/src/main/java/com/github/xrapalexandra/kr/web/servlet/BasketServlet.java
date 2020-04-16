@@ -35,7 +35,7 @@ public class BasketServlet extends HttpServlet {
 
         User user = (User) session.getAttribute("user");
         List<OrderDTO> orderInProcess = basketService.getOrdersByUserId(user.getUserId());
-        req.setAttribute("orderinprocess", orderInProcess);
+        req.setAttribute("orderInProcess", orderInProcess);
 
         WebUtils.forwardJSP("pages/basket", req, resp);
     }

@@ -26,7 +26,7 @@ public class WriteOfServlet  extends HttpServlet{
         }
 
         try {
-            resp.sendRedirect("/web/adminbasket");
+            resp.sendRedirect("/web/adminBasket");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -16,12 +16,12 @@ public class ChangeBasketServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        Status status = WebUtils.createStatus(req.getParameter("newstatus"));
-        int orderId = Integer.parseInt(req.getParameter("orderid"));
+        Status status = WebUtils.createStatus(req.getParameter("newStatus"));
+        int orderId = Integer.parseInt(req.getParameter("orderId"));
         basketService.changeOrderStatus(orderId, status);
 
         try {
-            resp.sendRedirect("/web/adminbasket");
+            resp.sendRedirect("/web/adminBasket");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

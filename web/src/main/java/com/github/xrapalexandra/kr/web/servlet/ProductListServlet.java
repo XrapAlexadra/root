@@ -14,7 +14,7 @@ public class ProductListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        req.setAttribute("productlist", productService.getProductList(1));
-        WebUtils.forwardJSP("pages/productlist", req, resp);
+        req.setAttribute("productList", productService.getProductList(1));
+        WebUtils.forwardJSP("pages/productList", req, resp);
     }
 }

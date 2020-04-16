@@ -9,13 +9,13 @@
 <body>
 <c:choose>
     <c:when test="${sessionScope.basket.orders.size()==0 || sessionScope.basket == null}">
-        <c:if test="${requestScope.orderinprocess == null}">
+        <c:if test="${requestScope.orderInProcess == null}">
             <h5>Ваша корзина пуста</h5>
         </c:if>
     </c:when>
     <c:otherwise>
-        <form id="setOrder" method="post" action="${pageContext.request.contextPath}/setorder"></form>
-        <form id="delFromBasket" method="get" action="${pageContext.request.contextPath}/delfrombasket"></form>
+        <form id="setOrder" method="post" action="${pageContext.request.contextPath}/setOrder"></form>
+        <form id="delFromBasket" method="get" action="${pageContext.request.contextPath}/delFromBasket"></form>
         <table>
             <caption>Товары в корзине</caption>
             <tr>
@@ -44,7 +44,7 @@
         <input form="setOrder" type="submit" value="Заказать">
     </c:otherwise>
 </c:choose>
-<c:if test="${requestScope.orderinprocess != null}">
+<c:if test="${requestScope.orderInProcess != null}">
     <table>
         <caption>Заказанные товары</caption>
         <tr>
@@ -56,7 +56,7 @@
             <th>Статус</th>
             <th></th>
         </tr>
-        <c:forEach items="${requestScope.orderinprocess}" var="item" varStatus="infdex">
+        <c:forEach items="${requestScope.orderInProcess}" var="item" varStatus="infdex">
             <tr>
                 <th><c:out value="${infdex.count}"/></th>
                 <th><c:out value="${item.id}"/></th>

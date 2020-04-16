@@ -1,7 +1,5 @@
 package com.github.xrapalexandra.kr.web.servlet;
 
-import com.github.xrapalexandra.kr.dao.BasketDao;
-import com.github.xrapalexandra.kr.dao.impl.DefaultBasketDao;
 import com.github.xrapalexandra.kr.service.BasketService;
 import com.github.xrapalexandra.kr.service.impl.DefaultBasketService;
 import com.github.xrapalexandra.kr.web.WebUtils;
@@ -16,8 +14,8 @@ public class AdminBasketServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        req.setAttribute("allorders", basketService.getAllOrders(1));
+        req.setAttribute("allOrders", basketService.getAllOrders(1));
 
-        WebUtils.forwardJSP("pages/adminbasket", req, resp);
+        WebUtils.forwardJSP("pages/adminBasket", req, resp);
     }
 }

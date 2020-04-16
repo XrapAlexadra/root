@@ -20,7 +20,7 @@
         <th>Изменить статус</th>
         <th></th>
     </tr>
-    <c:forEach items="${requestScope.allorders}" var="item" varStatus="infdex">
+    <c:forEach items="${requestScope.allOrders}" var="item" varStatus="infdex">
         <tr>
             <th><c:out value="${infdex.count}"/></th>
             <th><c:out value="${item.id}"/></th>
@@ -29,10 +29,10 @@
             <th><c:out value="${item.productPrice}"/></th>
             <th><c:out value="${item.quantity}"/></th>
             <th><c:out value="${item.status}"/></th>
-            <form method="get" action="${pageContext.request.contextPath}/changebasket">
+            <form method="get" action="${pageContext.request.contextPath}/changeBasket">
             <th>
                 <label>
-                    <select name="newstatus">
+                    <select name="newStatus">
                         <option value="1">ORDER</option>
                         <option value="2">CONFIRMED</option>
                         <option value="3">PAID</option>
@@ -40,12 +40,12 @@
                 </label>
             </th>
             <th>
-                <button type="submit" name="orderid" value="${item.id}">Изменить</button>
+                <button type="submit" name="orderId" value="${item.id}">Изменить</button>
             </th>
             </form>
         </tr>
     </c:forEach>
-    <form method="get" action="${pageContext.request.contextPath}/writeoff">
+    <form method="get" action="${pageContext.request.contextPath}/writeOff">
         <label>
             <input type="submit" value="списать товары">
         </label>

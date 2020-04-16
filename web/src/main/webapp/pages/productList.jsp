@@ -10,7 +10,7 @@
 <body>
 
 <c:if test="${sessionScope.user.role == Role.USER}">
-    <form id="choice" method="post" action="${pageContext.request.contextPath}/addorder"></form>
+    <form id="choice" method="post" action="${pageContext.request.contextPath}/addOrder"></form>
     <table>
         <caption>Спиcок товаров</caption>
         <tr>
@@ -21,7 +21,7 @@
             <th>Цена</th>
             <th>Количество</th>
         </tr>
-        <c:forEach items="${requestScope.productlist}" var="item" varStatus="infdex">
+        <c:forEach items="${requestScope.productList}" var="item" varStatus="infdex">
             <tr>
                 <th><label>
                     <input form="choice" type="checkbox" name="products[]" value="${item.id}">
@@ -48,7 +48,7 @@
         <h5 style="color: deeppink">${requestScope.error}</h5>
         <br>
     </c:if>
-    <form id="change" method="get" action=${pageContext.request.contextPath}/tochange></form>
+    <form id="change" method="get" action=${pageContext.request.contextPath}/toChange></form>
     <form id="del" method="get" action=${pageContext.request.contextPath}/del></form>
     <table>
         <caption>Спиcок товаров на складе</caption>
@@ -61,7 +61,7 @@
             <th></th>
             <th></th>
         </tr>
-        <c:forEach items="${requestScope.productlist}" var="item" varStatus="infdex">
+        <c:forEach items="${requestScope.productList}" var="item" varStatus="infdex">
             <tr>
                 <th><c:out value="${infdex.count}"/></th>
                 <th><c:out value="${item.id}"/></th>
@@ -69,10 +69,10 @@
                 <th><c:out value="${item.price}"/></th>
                 <th><c:out value="${item.quantity}"/></th>
                 <th>
-                    <button form="change" type="submit" name="productid" value="${item.id}">Изменить</button>
+                    <button form="change" type="submit" name="productId" value="${item.id}">Изменить</button>
                 </th>
                 <th>
-                    <button form="del" type="submit" name="productid" value="${item.id}">Удалить</button>
+                    <button form="del" type="submit" name="productId" value="${item.id}">Удалить</button>
                 </th>
             </tr>
         </c:forEach>
@@ -80,7 +80,7 @@
 
     <br>
 
-    <form method="get" action=${pageContext.request.contextPath}/addproduct>
+    <form method="get" action=${pageContext.request.contextPath}/addProduct>
         <fieldset style="width: 50px">
             <legend>Добавить товар</legend>
             <label>
@@ -100,9 +100,11 @@
         </fieldset>
     </form>
     <br>
-    <form method="get" action="${pageContext.request.contextPath}/adminbasket">
+    <form method="get" action="${pageContext.request.contextPath}/adminBasket">
         <input type="submit" value="Все заказы">
     </form>
+    <br>
+    <form
 </c:if>
 </body>
 </html>
