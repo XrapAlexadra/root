@@ -14,18 +14,29 @@ public class UserDaoTest {
     @Test
     void saveUser(){
         User user = new User("login", Role.USER, "user");
-        assertNotEquals(0, userDao.saveUser(user));
+        user.setUserId(userDao.saveUser(user));
+        assertNotEquals(0, user.getUserId());
+        userDao.delUser(user);
     }
 
     @Test
-    void getUserByLoginIsExsist(){
+    void getUserByLogin(){
         User user = new User("user", Role.USER, "user345");
-        userDao.saveUser(user);
+        user.setUserId(userDao.saveUser(user));
         assertEquals(user, userDao.getUserByLogin(user.getLogin()));
+        userDao.delUser(user);
     }
 
     @Test
-    void getUserByLoginNoExsist(){
-        assertNull(userDao.getUserByLogin("popolo"));
+    void getUserByLoginNoExist(){
+        assertNull(userDao.getUserByLogin("прпр"));
+    }
+
+    @Test
+    void delUser(){
+        User user = new User("zxcvb", Role.USER, "425146");
+        user.setUserId(userDao.saveUser(user));
+        userDao.delUser(user);
+        assertNull(userDao.getUserByLogin(user.getLogin()));
     }
 }

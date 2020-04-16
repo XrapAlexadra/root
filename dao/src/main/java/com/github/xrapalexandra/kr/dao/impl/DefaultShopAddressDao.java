@@ -46,7 +46,6 @@ public class DefaultShopAddressDao implements ShopAddressDao {
         }
     }
 
-    @Override
     public void delAddress(ShopAddress shopAddress) {
         final String query = "DELETE FROM shop_address WHERE id_shop = ?;";
         try (Connection connection = DataSource.getInstance().getConnection();
@@ -54,7 +53,7 @@ public class DefaultShopAddressDao implements ShopAddressDao {
             statement.setInt(1, shopAddress.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
-                throw new RuntimeException(shopAddress + " don't delete! ");
+                throw new RuntimeException(shopAddress + " don't delete!");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

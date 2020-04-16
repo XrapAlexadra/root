@@ -8,4 +8,5 @@ public interface UserDao {
 
     User getUserByLogin(String login);
 
+    void delUser(User user);
 }

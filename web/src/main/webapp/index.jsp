@@ -20,6 +20,6 @@
     </c:otherwise>
 </c:choose>
 
-<a href="${pageContext.request.contextPath}/productlist" title="Список товаров"><h3>Список товаров</h3></a>
+<a href="${pageContext.request.contextPath}/productList" title="Список товаров"><h3>Список товаров</h3></a>
 </body>
 </html>

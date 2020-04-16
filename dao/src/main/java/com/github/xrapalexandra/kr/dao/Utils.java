@@ -51,7 +51,7 @@ public class Utils {
     public static ShopAddress createShopAddress(ResultSet rs){
         try {
             ShopAddress shopAddress = new ShopAddress();
-            shopAddress.setId(rs.getInt("id"));
+            shopAddress.setId(rs.getInt("id_shop"));
             shopAddress.setCity(rs.getString("city_name"));
             shopAddress.setStreet(rs.getString("street"));
             shopAddress.setHouseNumber(rs.getInt("house_number"));

@@ -7,6 +7,15 @@ public class ShopAddress {
     private String street;
     private int houseNumber;
 
+    public ShopAddress() {
+    }
+
+    public ShopAddress(String city, String street, int houseNumber) {
+        this.city = city;
+        this.street = street;
+        this.houseNumber = houseNumber;
+    }
+
     public int getId() {
         return id;
     }

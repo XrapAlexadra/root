@@ -65,4 +65,20 @@ public class DefaultUserDao implements UserDao {
             throw new RuntimeException(e);
         }
     }
+    @Override
+    public void delUser(User user) {
+        if(user.getUserId() == 0)
+            throw new RuntimeException(user + " cannot be deleted. UserId didn't set!");
+        final String query = "DELETE FROM users WHERE user_id = ?;";
+        try (Connection connection = DataSource.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, user.getUserId());
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new RuntimeException(user + " don't delete!");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

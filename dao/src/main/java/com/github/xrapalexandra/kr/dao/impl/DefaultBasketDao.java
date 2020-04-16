@@ -66,7 +66,7 @@ public class DefaultBasketDao implements BasketDao {
             statement.setInt(1, order.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
-                throw new RuntimeException(order + " don't delete! " + affectedRows);
+                throw new RuntimeException(order + " don't delete.");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

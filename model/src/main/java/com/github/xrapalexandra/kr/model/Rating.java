@@ -7,6 +7,12 @@ public class Rating {
     private int userId;
     private int productId;
 
+    public Rating(int rating, int userId, int productId) {
+        this.rating = rating;
+        this.userId = userId;
+        this.productId = productId;
+    }
+
     public int getRatingId() {
         return ratingId;
     }

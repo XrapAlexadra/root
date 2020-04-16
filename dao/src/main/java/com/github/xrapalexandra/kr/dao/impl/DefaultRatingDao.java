@@ -61,10 +61,11 @@ public class DefaultRatingDao implements RatingDao {
     @Override
     public Double getAvrRatingByProductId(int productId) {
         final String query =
-                "SELECT AVG(r.rating) FROM (SELECT rating FROM rating_product WHERE rating_id = ? ) AS r;";
+                "SELECT AVG(r.rating) FROM (SELECT rating FROM rating_product WHERE product_id = ? ) AS r;";
 
         try (Connection connection = DataSource.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, productId);
             try (ResultSet rs = statement.executeQuery()) {
                 if (rs.next())
                     return rs.getDouble(1);
