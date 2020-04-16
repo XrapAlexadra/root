@@ -3,6 +3,7 @@ package com.github.xrapalexandra.kr.dao.impl;
 import com.github.xrapalexandra.kr.dao.DataSource;
 import com.github.xrapalexandra.kr.dao.ProductDao;
 import com.github.xrapalexandra.kr.dao.Utils;
+import com.github.xrapalexandra.kr.model.Order;
 import com.github.xrapalexandra.kr.model.Product;
 
 
@@ -132,6 +133,23 @@ public class DefaultProductDao implements ProductDao {
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0)
                 throw new RuntimeException("Can't delete product with ID: " + id + " from database!");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void updateProductQuantity(Order order) {
+        int newQuantity = this.getProductById(order.getProductId()).getQuantity()- order.getQuantity();
+        final String query = "UPDATE products SET quantity = ? WHERE product_id = ?;";
+        try (Connection connection = DataSource.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, newQuantity);
+            statement.setInt(2, order.getProductId());
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new RuntimeException("product" + order.getProductId() + " don't update with" + order + "! ");
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

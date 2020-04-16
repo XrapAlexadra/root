@@ -37,4 +37,17 @@ public class Utils {
             throw new RuntimeException(e);
         }
     }
+
+    public static Order createOrder(ResultSet rs){
+        try {
+            Order order = new Order();
+            order.setId(rs.getInt("id"));
+            order.setUserId(rs.getInt("user_id"));
+            order.setProductId(rs.getInt("product_id"));
+            order.setQuantity(rs.getInt("quantity"));
+            return order;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

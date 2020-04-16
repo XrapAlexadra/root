@@ -2,6 +2,7 @@ package com.github.xrapalexandra.kr.service.impl;
 
 import com.github.xrapalexandra.kr.dao.ProductDao;
 import com.github.xrapalexandra.kr.dao.impl.DefaultProductDao;
+import com.github.xrapalexandra.kr.model.Order;
 import com.github.xrapalexandra.kr.model.Product;
 import com.github.xrapalexandra.kr.service.ProductService;
 import org.slf4j.Logger;
@@ -62,6 +63,11 @@ public class DefaultProductService implements ProductService {
             logger.info("{}is already exist in database.", product);
             return false;
         }
+    }
+
+    @Override
+    public void updateProductQuantity(Order order) {
+        productDao.updateProductQuantity(order);
     }
 
     @Override

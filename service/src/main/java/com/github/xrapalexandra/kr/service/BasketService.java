@@ -15,4 +15,8 @@ public interface BasketService {
     List<OrderDTO> getAllOrders(int page);
 
     void changeOrderStatus(int orderId, Status status);
+
+    List<Order> getPaidOrders();
+
+    void delOrder(Order order);
 }

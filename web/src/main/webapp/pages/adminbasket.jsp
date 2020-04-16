@@ -45,6 +45,11 @@
             </form>
         </tr>
     </c:forEach>
+    <form method="get" action="${pageContext.request.contextPath}/writeoff">
+        <label>
+            <input type="submit" value="списать товары">
+        </label>
+    </form>
 </table>
 </body>
 </html>

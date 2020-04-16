@@ -57,7 +57,17 @@ public class DefaultBasketDao implements BasketDao {
 
     @Override
     public void delOrder(Order order) {
-
+        final String query = "DELETE FROM basket WHERE id = ?;";
+        try (Connection connection = DataSource.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, order.getId());
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new RuntimeException(order + " don't delete! " + affectedRows);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private final static int LIMIT = 20;
@@ -73,7 +83,7 @@ public class DefaultBasketDao implements BasketDao {
                 "ORDER BY u.login LIMIt ? OFFSET ?;";
         try (Connection connection = DataSource.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-             statement.setInt(1, LIMIT);
+            statement.setInt(1, LIMIT);
             statement.setInt(2, offset);
             try (ResultSet rs = statement.executeQuery()) {
                 final List<OrderDTO> orderDTOList = new ArrayList<>();
@@ -103,7 +113,7 @@ public class DefaultBasketDao implements BasketDao {
                 while (rs.next()) {
                     orderDTOList.add(Utils.createOrderDTO(rs));
                 }
-                if(orderDTOList.size() == 0)
+                if (orderDTOList.size() == 0)
                     return null;
                 else
                     return orderDTOList;
@@ -123,10 +133,31 @@ public class DefaultBasketDao implements BasketDao {
             statement.executeUpdate();
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
-                throw new RuntimeException( "Order " + orderId + " don't update! ");
+                throw new RuntimeException("Order " + orderId + " don't update! ");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Order> getPaidOrders() {
+        final String query = "SELECT * FROM basket WHERE status_id = (SELECT status_id FROM status WHERE status = 'PAID');";
+        try (Connection connection = DataSource.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+              try (ResultSet rs = statement.executeQuery()) {
+                final List<Order> orderList = new ArrayList<>();
+                while (rs.next()) {
+                    orderList.add(Utils.createOrder(rs));
+                }
+                if (orderList.size() == 0)
+                    return null;
+                else
+                    return orderList;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 }
+

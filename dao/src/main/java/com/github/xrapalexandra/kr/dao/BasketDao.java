@@ -17,4 +17,6 @@ public interface BasketDao {
     List<OrderDTO> getUserOrders(int user_id);
 
     void changeOrderStatus(int orderId, Status status);
+
+    List<Order> getPaidOrders();
 }

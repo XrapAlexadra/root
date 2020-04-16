@@ -49,4 +49,14 @@ public class DefaultBasketService implements BasketService {
     public void changeOrderStatus(int orderId, Status status) {
         basketDao.changeOrderStatus(orderId, status);
     }
+
+    @Override
+    public List<Order> getPaidOrders() {
+        return basketDao.getPaidOrders();
+    }
+
+    @Override
+    public void delOrder(Order order) {
+        basketDao.delOrder(order);
+    }
 }

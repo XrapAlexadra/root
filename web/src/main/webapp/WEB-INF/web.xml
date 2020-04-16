@@ -132,6 +132,15 @@
     <url-pattern>/changebasket</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>WriteOfServlet</servlet-name>
+    <servlet-class>com.github.xrapalexandra.kr.web.servlet.WriteOfServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WriteOfServlet</servlet-name>
+    <url-pattern>/writeoff</url-pattern>
+  </servlet-mapping>
+
 
   <filter>
     <filter-name>ProductListFilter</filter-name>
