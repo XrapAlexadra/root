@@ -4,10 +4,15 @@ import com.github.xrapalexandra.kr.dao.ShopAddressDao;
 import com.github.xrapalexandra.kr.dao.impl.DefaultShopAddressDao;
 import com.github.xrapalexandra.kr.model.ShopAddress;
 import com.github.xrapalexandra.kr.service.ShopAddressService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 public class DefaultShopAddressService implements ShopAddressService {
+
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     private DefaultShopAddressService() {
     }
@@ -31,17 +36,21 @@ public class DefaultShopAddressService implements ShopAddressService {
 
     @Override
     public int addAddress(ShopAddress shopAddress) {
-        return shopAddressDao.addAddress(shopAddress);
+        shopAddress.setId(shopAddressDao.addAddress(shopAddress));
+        logger.info("Add {} into DataBase.", shopAddress);
+        return shopAddress.getId();
     }
 
     @Override
     public void delAddress(ShopAddress shopAddress) {
         shopAddressDao.delAddress(shopAddress);
+        logger.info("Delete {} from DataBase.", shopAddress);
     }
 
     @Override
     public void updateAddress(ShopAddress newShopAddress) {
         shopAddressDao.updateAddress(newShopAddress);
+        logger.info("Update in DataBase to {}", newShopAddress);
     }
 
     @Override

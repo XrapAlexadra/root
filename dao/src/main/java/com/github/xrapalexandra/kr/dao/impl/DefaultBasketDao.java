@@ -6,10 +6,7 @@ import com.github.xrapalexandra.kr.dao.Utils;
 import com.github.xrapalexandra.kr.model.Order;
 import com.github.xrapalexandra.kr.model.OrderDTO;
 import com.github.xrapalexandra.kr.model.Status;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.lang.invoke.MethodHandles;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +15,6 @@ public class DefaultBasketDao implements BasketDao {
 
     private DefaultBasketDao() {
     }
-
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     private static volatile BasketDao instance;
 
@@ -50,7 +45,6 @@ public class DefaultBasketDao implements BasketDao {
             statement.executeUpdate();
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 generatedKeys.next();
-                logger.info("addOrder");
                 return generatedKeys.getInt(1);
             }
         } catch (SQLException e) {

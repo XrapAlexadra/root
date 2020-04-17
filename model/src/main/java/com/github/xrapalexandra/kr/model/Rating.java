@@ -44,4 +44,14 @@ public class Rating {
     public void setProductId(int productId) {
         this.productId = productId;
     }
+
+    @Override
+    public String toString() {
+        return "Rating{" +
+                "ratingId=" + ratingId +
+                ", rating=" + rating +
+                ", userId=" + userId +
+                ", productId=" + productId +
+                '}';
+    }
 }

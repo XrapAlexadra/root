@@ -55,12 +55,12 @@ public class DefaultProductService implements ProductService {
 
     @Override
     public Boolean updateProduct(Product product) {
-        if(productDao.getIdProduct(product) == 0){
+        if (productDao.getIdProduct(product) == 0) {
             productDao.updateProduct(product);
             logger.info("{} update in database.", product);
             return true;
         } else {
-            logger.info("{}is already exist in database.", product);
+            logger.info("{} is already exist in database.", product);
             return false;
         }
     }
