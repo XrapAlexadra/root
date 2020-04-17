@@ -150,4 +150,20 @@
     <filter-name>ProductListFilter</filter-name>
     <servlet-name>ProductListServlet</servlet-name>
   </filter-mapping>
+
+  <filter>
+    <filter-name>OnlyForAdminFilter</filter-name>
+    <filter-class>com.github.xrapalexandra.kr.web.filter.OnlyForAdminFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>OnlyForAdminFilter</filter-name>
+    <servlet-name>ChangeBasketServlet</servlet-name>
+    <servlet-name>AdminBasketServlet</servlet-name>
+    <servlet-name>WriteOfServlet</servlet-name>
+    <servlet-name>DelProductServlet</servlet-name>
+    <servlet-name>ProductToChangeServlet</servlet-name>
+    <servlet-name>AddProductServlet</servlet-name>
+    <servlet-name>ChangeProductServlet</servlet-name>
+  </filter-mapping>
 </web-app>
