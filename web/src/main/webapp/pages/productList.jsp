@@ -84,7 +84,7 @@
         <fieldset style="width: 50px">
             <legend>Добавить товар</legend>
             <label>
-                <input type="text" name="name" required pattern="^[A-Za-zА-Яа-яЁё\s]+$" maxlength="30" size="33">
+                <input type="text" name="name" required pattern="^[A-Za-zА-Яа-яЁё][a-zA-ZА-Яа-яЁё0-9-_\.\s]{1,20}$" maxlength="30" size="33">
             </label>
             <br>
             <label>
@@ -108,3 +108,4 @@
 </c:if>
 </body>
 </html>
+<%--"^[A-Za-zА-Яа-яЁё\s]+$"--%>
