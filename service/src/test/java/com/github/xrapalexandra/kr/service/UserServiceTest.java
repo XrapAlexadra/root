@@ -22,11 +22,10 @@ public class UserServiceTest {
     private UserDao userDao;
 
     @InjectMocks
-    private DefaultUserService userService;
+    private UserService userService = DefaultUserService.getInstance();
 
     @Test
     void saveUserInDB(){
-
         when(userDao.getUserByLogin(any())).thenReturn(null);
         when(userDao.saveUser(any())).thenReturn(10);
         User user = new User("qwerty", Role.USER, "123456");
@@ -48,7 +47,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void loginWithNotRightPass(){
+    void loginWithWrongPass(){
         User user = new User("qwerty", Role.USER, "123456");
         when(userDao.getUserByLogin(any())).thenReturn(user);
         assertNull(userService.login(user.getLogin(), "qwerty"));

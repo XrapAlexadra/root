@@ -9,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,10 +19,20 @@ public class ProductServiceTest {
     private ProductDao productDao;
 
     @InjectMocks
-    private DefaultProductService productService;
-//    @Test
-//    void update() {
-//        Product product = new Product("asdf", 15, 56);
-//        assertTrue(productService.updateProduct(product));
-//    }
+    private ProductService productService = DefaultProductService.getInstance();
+
+    @Test
+    void updateProduct() {
+        Product product = new Product("item22", 5, 10);
+        when(productDao.getIdProduct(product)).thenReturn(0);
+        assertTrue(productService.updateProduct(product));
+    }
+
+    @Test
+    void updateProductIsExist() {
+        Product product = new Product("item22", 5, 10);
+        when(productDao.getIdProduct(product)).thenReturn(12);
+        assertFalse(productService.updateProduct(product));
+    }
+
 }
